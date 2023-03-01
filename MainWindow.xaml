@@ -7,20 +7,16 @@
         xmlns:view="clr-namespace:DoToNotify2._0.MVVM.View"
         xmlns:local="clr-namespace:DoToNotify2._0"
         mc:Ignorable="d"
-        Height="450" Width="800"
-        Background="Transparent"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        ResizeMode="NoResize">
+        Height="500" Width="800">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
     
-    <Border CornerRadius="20">
+    <Border>
         <Border.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                <GradientStop Color="#200" Offset="0.0"/>
+                <GradientStop Color="#483D8B" Offset="0.0"/>
                 <GradientStop Color="Black" Offset="1"/>
             </LinearGradientBrush>
         </Border.Background>
@@ -43,12 +39,12 @@
 
             <Border Grid.Row="1"
                     Grid.Column="0"
-                    CornerRadius="20"
+                    CornerRadius="10"
                     Margin="15">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="White" Offset="0.0"/>
-                        <GradientStop Color="DarkRed" Offset="1"/>
+                        <GradientStop Color="#7B68EE" Offset="0.0"/>
+                        <GradientStop Color="Black" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
                 <StackPanel Margin="10,0,10,0">
