@@ -3,10 +3,88 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:DoToNotify2._0.MVVM.ViewModel"            
+        xmlns:view="clr-namespace:DoToNotify2._0.MVVM.View"
         xmlns:local="clr-namespace:DoToNotify2._0"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Height="450" Width="800"
+        Background="Transparent"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize">
 
-    </Grid>
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    
+    <Border CornerRadius="20">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                <GradientStop Color="#200" Offset="0.0"/>
+                <GradientStop Color="Black" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="ToDoNotify!"
+                       FontSize="40"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+
+            <Border Grid.Row="1"
+                    Grid.Column="0"
+                    CornerRadius="20"
+                    Margin="15">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="White" Offset="0.0"/>
+                        <GradientStop Color="DarkRed" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel Margin="10,0,10,0">
+                    <TextBlock Text="Task Creation"
+                               HorizontalAlignment="Center"
+                               FontSize="25"
+                               Foreground="Black"/>
+                    <TextBlock Text="Enter task description"
+                               HorizontalAlignment="Left"
+                               FontSize="20"
+                               Margin="0,30,0,0"/>
+                    <TextBox Height="25"
+                             FontSize="18"
+                             Style="{StaticResource RoundedTextBox}"/>
+                    <TextBlock Text="Enter task dealine"
+                               HorizontalAlignment="Left"
+                               FontSize="20"
+                               Margin="0,10,0,0"/>
+                    <TextBox Height="25"
+                             FontSize="18"
+                             Style="{StaticResource RoundedTextBox}"/>
+                    <Button Style="{StaticResource RoundedButtonTheme}"
+                            Content="Create!"
+                            VerticalAlignment="Bottom"
+                            Margin="0,50,0,0"
+                            Height="30"
+                            FontSize="18"
+                            />
+                </StackPanel>
+            </Border>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="15"
+                            Content="{Binding}">
+            </ContentControl>
+        </Grid>
+    </Border>
 </Window>
