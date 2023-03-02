@@ -7,7 +7,8 @@
         xmlns:view="clr-namespace:DoToNotify2._0.MVVM.View"
         xmlns:local="clr-namespace:DoToNotify2._0"
         mc:Ignorable="d"
-        Height="500" Width="800">
+        Height="500" Width="800"
+        MinHeight="500" MinWidth="800">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
