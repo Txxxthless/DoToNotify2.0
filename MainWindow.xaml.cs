@@ -21,9 +21,12 @@ namespace DoToNotify2._0
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
+            viewModel = new MainViewModel();
+            this.DataContext = viewModel;
         }
     }
 }

@@ -24,5 +24,10 @@ namespace DoToNotify2._0.MVVM.View
         {
             InitializeComponent();
         }
+
+        private void objectives_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
