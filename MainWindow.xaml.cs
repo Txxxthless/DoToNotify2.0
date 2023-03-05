@@ -25,8 +25,7 @@ namespace DoToNotify2._0
         public MainWindow()
         {
             InitializeComponent();
-            viewModel = new MainViewModel();
-            this.DataContext = viewModel;
+            DataContext = new MainViewModel();
         }
     }
 }

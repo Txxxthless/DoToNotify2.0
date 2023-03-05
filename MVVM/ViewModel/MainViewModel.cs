@@ -16,13 +16,36 @@ namespace DoToNotify2._0.MVVM.ViewModel
     {
         private readonly ObservableCollection<ObjectiveViewModel> _objectives;
         public ObservableCollection<ObjectiveViewModel> Objectives => _objectives;
+
         public MainViewModel()
         {
             _objectives = new ObservableCollection<ObjectiveViewModel>();
 
-            _objectives.Add(new ObjectiveViewModel(new Objective(DateTime.Now, "Cook")));
-            _objectives.Add(new ObjectiveViewModel(new Objective(DateTime.Now, "How does it feel?")));
-            _objectives.Add(new ObjectiveViewModel(new Objective(DateTime.Now, "Yer Blues")));
+            _objectives.Add(new ObjectiveViewModel(new Objective(new DateTime(2023, 3, 4, 11, 11, 0), "Do stuff")));
+
+            //Task.Run(Check);
+        }
+
+        public void Check()
+        {
+                while(true)
+                {
+                    int index = -1;
+
+                    foreach (var o in _objectives)
+                    {
+                        if (o.DeadLine <= DateTime.Now)
+                        {
+                            index = _objectives.IndexOf(o);
+                            break;
+                        }
+                    }
+
+                    if (index >= 0)
+                    {
+                        _objectives.RemoveAt(index);
+                    }
+                }
         }
     }
 }
