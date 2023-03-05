@@ -45,18 +45,20 @@
                     <TextBlock Text="Task Creation"
                                HorizontalAlignment="Center"
                                FontSize="25"
-                               Foreground="Black"/>
+                               Foreground="White"/>
                     <TextBlock Text="Enter task description"
                                HorizontalAlignment="Left"
                                FontSize="20"
-                               Margin="0,30,0,0"/>
+                               Margin="0,30,0,0"
+                               Foreground="White"/>
                     <TextBox Height="25"
                              FontSize="18"
                              Style="{StaticResource RoundedTextBox}"/>
                     <TextBlock Text="Enter task dealine"
                                HorizontalAlignment="Left"
                                FontSize="20"
-                               Margin="0,10,0,0"/>
+                               Margin="0,10,0,0"
+                               Foreground="White"/>
                     <TextBox Height="25"
                              FontSize="18"
                              Style="{StaticResource RoundedTextBox}"/>
@@ -85,7 +87,8 @@
                     
                     <TextBlock Text="Your Tasks"
                        FontSize="25"
-                       HorizontalAlignment="Center"/>
+                       HorizontalAlignment="Center"
+                       Foreground="White"/>
                     <ListBox x:Name="objectives"
                      ItemsSource="{Binding Objectives}"
                      MinHeight="265"

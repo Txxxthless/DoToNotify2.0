@@ -3,6 +3,7 @@ using DoToNotify2._0.MVVM.Model;
 using DoToNotify2._0.MVVM.View;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -21,31 +22,49 @@ namespace DoToNotify2._0.MVVM.ViewModel
         {
             _objectives = new ObservableCollection<ObjectiveViewModel>();
 
-            _objectives.Add(new ObjectiveViewModel(new Objective(new DateTime(2023, 3, 4, 11, 11, 0), "Do stuff")));
+            _objectives.Add(new ObjectiveViewModel(new Objective(
+                new DateTime(2023, 3, 5, 11, 27, 10), 
+                "Do stuff")));
 
-            //Task.Run(Check);
+            _objectives.Add(new ObjectiveViewModel(new Objective(
+                new DateTime(2023, 3, 5, 11, 27, 11),
+                "Do stuff")));
+
+            _objectives.Add(new ObjectiveViewModel(new Objective(
+                new DateTime(2023, 3, 5, 11, 27, 12),
+                "Do stuff")));
+
+            Task.Run(Check);
         }
 
         public void Check()
         {
-                while(true)
+            List<int> indexes = new List<int>();
+
+            while (true)
+            {
+                foreach (var o in _objectives)
                 {
-                    int index = -1;
-
-                    foreach (var o in _objectives)
+                    if (o.DeadLine <= DateTime.Now)
                     {
-                        if (o.DeadLine <= DateTime.Now)
-                        {
-                            index = _objectives.IndexOf(o);
-                            break;
-                        }
-                    }
-
-                    if (index >= 0)
-                    {
-                        _objectives.RemoveAt(index);
+                        indexes.Add(_objectives.IndexOf(o));
                     }
                 }
+
+                if (indexes.Count > 0)
+                {
+                    //!!!!!!!!
+                    foreach (int index in indexes)
+                    {
+                        App.Current.Dispatcher.Invoke(() =>
+                        {
+                            _objectives.RemoveAt(index);
+                        });
+                    }
+                }
+
+                indexes.Clear();
+            }
         }
     }
 }
