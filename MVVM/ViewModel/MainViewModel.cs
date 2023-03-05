@@ -100,13 +100,16 @@ namespace DoToNotify2._0.MVVM.ViewModel
 
             while (true)
             {
-                foreach (var o in _objectives)
+                try
                 {
-                    if (o.DeadLine <= DateTime.Now)
+                    foreach (var o in _objectives)
                     {
-                        indexes.Add(_objectives.IndexOf(o));
+                        if (o.DeadLine <= DateTime.Now)
+                        {
+                            indexes.Add(_objectives.IndexOf(o));
+                        }
                     }
-                }
+                } catch (Exception ex) { Console.WriteLine(ex); }
 
                 if (indexes.Count > 0)
                 {
