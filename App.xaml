@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Themes/TextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Themes/RoundedButtonTheme.xaml"/>
                 <ResourceDictionary Source="Themes/RoundedListBox.xaml"/>
+                <ResourceDictionary Source="Themes/RoundedComboBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:MainViewModel}">

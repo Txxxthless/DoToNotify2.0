@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DoToNotify2._0.MVVM.View" xmlns:viewmodel="clr-namespace:DoToNotify2._0.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
+             xmlns:local="clr-namespace:DoToNotify2._0.MVVM.View" 
+             xmlns:viewmodel="clr-namespace:DoToNotify2._0.MVVM.ViewModel" 
+             xmlns:usercontrols="clr-namespace:DoToNotify2._0.CustomControls"
+             xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
+    d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -14,7 +18,7 @@
                 <GradientStop Color="Black" Offset="1"/>
             </LinearGradientBrush>
         </Border.Background>
-
+    
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="280"/>
@@ -53,22 +57,31 @@
                                Foreground="White"/>
                     <TextBox Height="25"
                              FontSize="18"
-                             Style="{StaticResource RoundedTextBox}"/>
-                    <TextBlock Text="Enter task dealine"
+                             Style="{StaticResource RoundedTextBox}"
+                             Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Enter task date"
                                HorizontalAlignment="Left"
                                FontSize="20"
                                Margin="0,10,0,0"
                                Foreground="White"/>
-                    <TextBox Height="25"
-                             FontSize="18"
-                             Style="{StaticResource RoundedTextBox}"/>
+                    <DatePicker Height="35"
+                                FontSize="18"
+                                Margin="5,0,5,0"
+                                SelectedDate="{Binding DeadLineDate}"
+                                />
+                    <TextBlock Text="Enter task time"
+                               HorizontalAlignment="Left"
+                               FontSize="20"
+                               Margin="0,10,0,0"
+                               Foreground="White"/>
+                    <usercontrols:TimePicker Margin="5,0,5,0"/>
                     <Button Style="{StaticResource RoundedButtonTheme}"
                             Content="Create!"
                             VerticalAlignment="Bottom"
-                            Margin="0,50,0,0"
+                            Margin="0,40,0,0"
                             Height="30"
                             FontSize="18"
-                            />
+                            Command="{Binding CreateObjectiveCommand}"/>
                 </StackPanel>
             </Border>
 

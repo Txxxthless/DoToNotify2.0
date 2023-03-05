@@ -1,10 +1,6 @@
 ﻿using DoToNotify2._0.Core;
 using DoToNotify2._0.MVVM.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoToNotify2._0.MVVM.ViewModel
 {

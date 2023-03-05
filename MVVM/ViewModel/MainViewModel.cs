@@ -1,38 +1,95 @@
 ﻿using DoToNotify2._0.Core;
 using DoToNotify2._0.MVVM.Model;
-using DoToNotify2._0.MVVM.View;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Data;
+using System.Windows.Controls;
 
 namespace DoToNotify2._0.MVVM.ViewModel
 {
     internal class MainViewModel : ObservableObject
     {
+        private string _description = "";
+        private DateTime _deadLine = DateTime.Now;
+        private int _hours = 12;
+        private int _seconds = 0;
+        private int _minutes = 0;
+
+
         private readonly ObservableCollection<ObjectiveViewModel> _objectives;
         public ObservableCollection<ObjectiveViewModel> Objectives => _objectives;
+        
+
+        public CommandObject CreateObjectiveCommand { get; }
+        public string Description 
+        {
+            get
+            {
+                return _description;
+            }
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
+        }
+        public DateTime DeadLineDate
+        {
+            get
+            {
+                return _deadLine;
+            }
+            set
+            {
+                _deadLine = value;
+                OnPropertyChanged();
+            }
+        }
+        public int Hours
+        {
+            get
+            {
+                return _hours;
+            }
+            set
+            {
+                _hours = Convert.ToInt32(value);
+                OnPropertyChanged();
+            }
+        }
+        public int Minutes
+        {
+            get
+            {
+                return _minutes;
+            }
+            set
+            {
+                _minutes = Convert.ToInt32(value);
+                OnPropertyChanged();
+            }
+        }
+        public int Seconds
+        {
+            get
+            {
+                return _seconds;
+            }
+            set
+            {
+                _seconds = Convert.ToInt32(value);
+                OnPropertyChanged();
+            }
+        }
+
 
         public MainViewModel()
         {
             _objectives = new ObservableCollection<ObjectiveViewModel>();
-
-            _objectives.Add(new ObjectiveViewModel(new Objective(
-                new DateTime(2023, 3, 5, 11, 27, 10), 
-                "Do stuff")));
-
-            _objectives.Add(new ObjectiveViewModel(new Objective(
-                new DateTime(2023, 3, 5, 11, 27, 11),
-                "Do stuff")));
-
-            _objectives.Add(new ObjectiveViewModel(new Objective(
-                new DateTime(2023, 3, 5, 11, 27, 12),
-                "Do stuff")));
+            
+            CreateObjectiveCommand = new CreateObjectiveCommand(this);
 
             Task.Run(Check);
         }
