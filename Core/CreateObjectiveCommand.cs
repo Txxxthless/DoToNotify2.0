@@ -14,6 +14,7 @@ namespace DoToNotify2._0.Core
 
         public override void Execute(object? parameter)
         {
+
             DateTime deadline = new DateTime
                 (
                 _bindedViewModel.DeadLineDate.Year,
@@ -23,6 +24,7 @@ namespace DoToNotify2._0.Core
                 _bindedViewModel.Minutes,
                 _bindedViewModel.Seconds
                 );
+
             Objective o = new Objective(deadline, _bindedViewModel.Description);
             _bindedViewModel.Objectives.Add(new ObjectiveViewModel(o));
         }

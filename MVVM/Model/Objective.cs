@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace DoToNotify2._0.MVVM.Model
 {
+    [DataContract]
     internal class Objective
     {
+        [DataMember]
         private DateTime _deadLine;
+        [DataMember]
         private string _description;
 
         public DateTime DeadLine => _deadLine;

@@ -3,12 +3,14 @@ using DoToNotify2._0.MVVM.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace DoToNotify2._0.MVVM.ViewModel
 {
+    [DataContract]
     internal class MainViewModel : ObservableObject
     {
         private string _description = "";
@@ -17,8 +19,9 @@ namespace DoToNotify2._0.MVVM.ViewModel
         private int _seconds = 0;
         private int _minutes = 0;
 
-
-        private readonly ObservableCollection<ObjectiveViewModel> _objectives;
+        [DataMember]
+        public ObservableCollection<ObjectiveViewModel> _objectives;
+        [DataMember]
         public ObservableCollection<ObjectiveViewModel> Objectives => _objectives;
         
 
