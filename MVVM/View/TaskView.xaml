@@ -68,7 +68,7 @@
                                 FontSize="18"
                                 Margin="5,0,5,0"
                                 SelectedDate="{Binding DeadLineDate}"
-                                />
+                                Style="{StaticResource RoundedDatePicker}"/>
                     <TextBlock Text="Enter task time"
                                HorizontalAlignment="Left"
                                FontSize="20"
