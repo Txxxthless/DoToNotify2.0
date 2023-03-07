@@ -78,10 +78,25 @@
                     <Button Style="{StaticResource RoundedButtonTheme}"
                             Content="Create!"
                             VerticalAlignment="Bottom"
-                            Margin="0,40,0,0"
+                            Margin="0,35,0,0"
                             Height="30"
                             FontSize="18"
-                            Command="{Binding CreateObjectiveCommand}"/>
+                            Command="{Binding CreateObjectiveCommand}">
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="Button.Click">
+                                <BeginStoryboard>
+                                    <Storyboard TargetProperty="Width"
+                                                TargetName="objectives">
+                                        <DoubleAnimation From="0"
+                                                         To="450"
+                                                         Duration="0:0:0.2">
+                                         
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
+                    </Button>
                 </StackPanel>
             </Border>
 
@@ -103,12 +118,13 @@
                        HorizontalAlignment="Center"
                        Foreground="White"/>
                     <ListBox x:Name="objectives"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     MaxHeight="200"
                      ItemsSource="{Binding Objectives}"
                      MinHeight="265"
                      Margin="20"
                      VerticalAlignment="Center"
                      Style="{StaticResource RoundedListBox}">
-
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" 
